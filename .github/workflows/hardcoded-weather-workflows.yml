@@ -1,24 +1,26 @@
-name: Weather API with Hardcoded API Key
+name: Weather Fetch (Hardcoded API Key)
 
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
   fetch-weather:
-    runs-on: ubuntu-latest  
-
-   jobs:
-  weather:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Display hardcoded API key
+      - name: Set up API key
         run: |
-          echo "Using hardcoded API key: your-api-key"
-          curl -X GET "https://api.openweathermap.org/data/2.5/weather?q=London&appid=your-api-key"
+          echo "WEATHER_API_KEY=mock-api-key" >> $GITHUB_ENV
+          echo "The API key being used is: mock-api-key"
+
+      - name: Fetch weather data
+        run: |
+          echo "Weather API Key: $WEATHER_API_KEY"
+          # Your command to fetch weather data goes here
+
 
