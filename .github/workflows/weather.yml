@@ -1,0 +1,16 @@
+name: Weather API Demo
+
+on: [push]
+
+jobs:
+  fetch-weather:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run weather script
+        run: |
+          export WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }}
+          chmod +x get_weather.sh
+          ./get_weather.sh
