@@ -1,0 +1,24 @@
+name: Weather API with Hardcoded API Key
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  fetch-weather:
+    runs-on: ubuntu-latest  
+
+   jobs:
+  weather:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Display hardcoded API key
+        run: |
+          echo "Using hardcoded API key: your-api-key"
+          curl -X GET "https://api.openweathermap.org/data/2.5/weather?q=London&appid=your-api-key"
+
